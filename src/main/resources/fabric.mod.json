@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "guardeez",
+  "version": "${version}",
+
+  "name": "Guardeez",
+  "description": "Fixes the awful guardian hitbox issue",
+  "authors": [
+    "AmyMialee",
+    "8onfire"
+  ],
+  "contact": {
+    "email": "guardeez@amymialee.xyz",
+    "homepage": "https://amymialee.xyz",
+    "irc": "",
+    "sources": "https://github.com/AmyMialeeMods/guardeez",
+    "issues": "https://github.com/AmyMialeeMods/guardeez/issues"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/guardeez/icon.png",
+
+  "environment": "client",
+  "mixins": [
+    "guardeez.mixins.json"
+  ],
+
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_10031": ["xyz/amymialee/guardeez/util/YawHolder"]
+    },
+    "modmenu": {
+      "links": {
+        "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/guardeez",
+        "modmenu.discord": "https://discord.amymialee.xyz",
+        "modmenu.kofi": "https://ko-fi.com/amymialee",
+        "modmenu.modrinth": "https://modrinth.com/project/guardeez",
+        "modmenu.twitter": "https://x.com/amy_mialee",
+        "modmenu.wiki": "https://modrinth.com/project/guardeez"
+      },
+      "update_checker": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.amymialee.guardeez.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "GuardianEntityRendererMixin",
+    "GuardianEntityRenderStateMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
