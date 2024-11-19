@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import xyz.amymialee.guardeez.GuardeezClient;
 import xyz.amymialee.guardeez.util.YawHolder;
 
 @Mixin(GuardianEntityRenderer.class)
@@ -22,7 +21,7 @@ public class GuardianEntityRendererMixin {
     @WrapOperation(method = "render(Lnet/minecraft/client/render/entity/state/GuardianEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/MobEntityRenderer;render(Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V"))
     public void guardeez$betterAngles(GuardianEntityRenderer instance, @NotNull LivingEntityRenderState state, @NotNull MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, @NotNull Operation<Void> original) {
         var pitch = state.pitch;
-        var yaw = ((GuardianEntityRenderState) state).guardeez$getYaw();
+        var yaw = ((YawHolder) state).guardeez$getYaw();
         matrixStack.push();
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-yaw));
         matrixStack.translate(0f, -Math.abs(pitch / 90f), pitch / 90f);
@@ -33,6 +32,6 @@ public class GuardianEntityRendererMixin {
 
     @Inject(method = "updateRenderState(Lnet/minecraft/entity/mob/GuardianEntity;Lnet/minecraft/client/render/entity/state/GuardianEntityRenderState;F)V", at = @At(value = "TAIL"))
     private void guardeez$head(@NotNull GuardianEntity guardianEntity, @NotNull GuardianEntityRenderState state, float f, CallbackInfo ci) {
-        state.guardeez$setYaw(guardianEntity.headYaw);
+        ((YawHolder) state).guardeez$setYaw(guardianEntity.headYaw);
     }
 }

@@ -25,9 +25,6 @@
   ],
 
   "custom": {
-    "loom:injected_interfaces": {
-      "net/minecraft/class_10031": ["xyz/amymialee/guardeez/util/YawHolder"]
-    },
     "modmenu": {
       "links": {
         "modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/guardeez",

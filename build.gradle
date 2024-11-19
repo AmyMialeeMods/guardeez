@@ -21,7 +21,7 @@ publishMods {
     file = remapJar.archiveFile
     additionalFiles.files.add(remapSourcesJar.archiveFile.get().getAsFile())
     displayName = "${project.version.toString().split("\\+")[0]} for Fabric $minecraft_version"
-    changelog = new File("CHANGELOG.md").text
+    changelog = ""
     type = STABLE
     modLoaders.addAll("fabric", "quilt")
     dryRun = !providers.gradleProperty("curseforge_api_key").isPresent() || !providers.gradleProperty("modrinth_api_key").isPresent() || !providers.gradleProperty("discord_webhook").isPresent()
@@ -37,8 +37,6 @@ publishMods {
         clientRequired = true;
         serverRequired = true;
         projectSlug = curseforge_slug
-        requires("fabric-api")
-        embeds("cardinal-components-api")
     }
     modrinth {
         accessToken = providers.gradleProperty("modrinth_api_key")
@@ -49,8 +47,6 @@ publishMods {
             includeSnapshots = true
         }
         announcementTitle = "Download from Modrinth"
-        requires("fabric-api")
-        embeds("cardinal-components-api")
     }
     discord {
         webhookUrl = providers.gradleProperty("discord_webhook")
